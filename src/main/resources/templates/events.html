@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>さよならステイチューン カレンダー</title>
+</head>
+
+<body>
+    <h1>さよならステイチューン イベント一覧</h1>
+
+    <h2>新規登録</h2>
+    <form th:action="@{/events}" th:object="${newEvent}" method="post">
+        <label>イベント名: <input type="text" th:field="*{eventName}"></label><br>
+        <label>開催日: <input type="date" th:field="*{eventDate}"></label><br>
+        <label>開場時間: <input type="time" th:field="*{openTime}"></label><br>
+        <label>開演時間: <input type="time" th:field="*{startTime}"></label><br>
+        <label>会場: <input type="text" th:field="*{venue}"></label><br>
+        <label>チケット購入済み: <input type="checkbox" th:field="*{ticketPurchased}"></label><br>
+        <button type="submit">登録</button>
+    </form>
+
+    <h2>登録済みイベント</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>イベント名</th>
+                <th>開催日</th>
+                <th>開場</th>
+                <th>開演</th>
+                <th>会場</th>
+                <th>チケット</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="event : ${events}">
+                <td th:text="${event.eventName}"></td>
+                <td th:text="${event.eventDate}"></td>
+                <td th:text="${event.openTime}"></td>
+                <td th:text="${event.startTime}"></td>
+                <td th:text="${event.venue}"></td>
+                <td th:text="${event.ticketPurchased} ? '購入済' : '未購入'"></td>
+                <td>
+                    <form th:action="@{'/events/' + ${event.id} + '/delete'}" method="post">
+                        <button type="submit">削除</button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>
