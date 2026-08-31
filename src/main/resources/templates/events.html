@@ -42,6 +42,7 @@
                 <td th:text="${event.venue}"></td>
                 <td th:text="${event.ticketPurchased} ? '購入済' : '未購入'"></td>
                 <td>
+                    <a th:href="@{'/events/' + ${event.id} + '/edit'}">編集</a>
                     <form th:action="@{'/events/' + ${event.id} + '/delete'}" method="post">
                         <button type="submit">削除</button>
                     </form>

@@ -37,4 +37,20 @@ public class EventController {
         eventRepository.deleteById(id);
         return "redirect:/events";
     }
+
+    // 編集画面を表示
+    @GetMapping("/events/{id}/edit")
+    public String edit(@PathVariable Long id, Model model) {
+        Event event = eventRepository.findById(id).orElseThrow();
+        model.addAttribute("event", event);
+        return "edit";
+    }
+
+    // 更新処理
+    @PostMapping("/events/{id}/edit")
+    public String update(@PathVariable Long id, @ModelAttribute Event event) {
+        event.setId(id);
+        eventRepository.save(event);
+        return "redirect:/events";
+    }
 }
