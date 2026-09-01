@@ -8,14 +8,16 @@
     <h1>イベント編集</h1>
 
     <form th:action="@{'/events/' + ${event.id} + '/edit'}" th:object="${event}" method="post">
-        <label>イベント名: <input type="text" th:field="*{eventName}"></label><br>
-        <label>開催日: <input type="date" name="eventDate" th:value="${#temporals.format(event.eventDate, 'yyyy-MM-dd')}"></label><br>
-        <label>開場時間: <input type="time" name="openTime" th:value="${#temporals.format(event.openTime, 'HH:mm')}"></label><br>
-        <label>開演時間: <input type="time" name="startTime" th:value="${#temporals.format(event.startTime, 'HH:mm')}"></label><br>
-        <label>会場: <input type="text" th:field="*{venue}"></label><br>
-        <label>チケット購入済み: <input type="checkbox" th:field="*{ticketPurchased}"></label><br>
+        <label>イベント名：<input type="text" th:field="*{eventName}"></label><br>
+        <label>開催日：<input type="date" name="eventDate" th:value="${#temporals.format(event.eventDate, 'yyyy-MM-dd')}"></label><br>
+        <label>OPEN：<input type="time" name="openTime" th:value="${#temporals.format(event.openTime, 'HH:mm')}"></label><br>
+        <label>START：<input type="time" name="startTime" th:value="${#temporals.format(event.startTime, 'HH:mm')}"></label><br>
+        <label>会場：<input type="text" th:field="*{venue}"></label><br>
+        <label>チケット購入済み：<input type="checkbox" th:field="*{ticketPurchased}"></label><br>
+        <label>備考：<input type="text" th:field="*{note}"></label><br>
         <button type="submit">更新</button>
     </form>
 
     <p><a th:href="@{/events}">一覧に戻る</a></p>
 </body>
+</html>
