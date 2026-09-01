@@ -19,7 +19,7 @@ public class EventController {
     // 一覧ページを表示（GET＝見る）
     @GetMapping("/events")
     public String list(Model model) {
-        model.addAttribute("events", eventRepository.findAll());
+        model.addAttribute("events", eventRepository.findAllByOrderByEventDateAsc());
         model.addAttribute("newEvent", new Event());
         return "events";
     }
