@@ -24,6 +24,12 @@ public class EventController {
         return "events";
     }
 
+    // カレンダーページを表示（GET＝見る）
+    @GetMapping("/calendar")
+    public String calendar() {
+        return "calendar";
+    }
+
     // 登録処理（POST＝送る）
     @PostMapping("/events")
     public String create(@ModelAttribute Event event) {

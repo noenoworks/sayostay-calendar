@@ -8,7 +8,7 @@
 
 <body>
     <h1>さよならステイチューン イベント一覧</h1>
-
+    <p><a th:href="@{/calendar}">カレンダー</a></p>
     <h2>新規登録</h2>
     <form th:action="@{/events}" th:object="${newEvent}" method="post">
         <label>イベント名：<input type="text" th:field="*{eventName}"></label><br>
