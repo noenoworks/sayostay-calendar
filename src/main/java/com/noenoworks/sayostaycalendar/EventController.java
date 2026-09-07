@@ -20,14 +20,20 @@ public class EventController {
     @GetMapping("/events")
     public String list(Model model) {
         model.addAttribute("events", eventRepository.findAllByOrderByEventDateAsc());
-        model.addAttribute("newEvent", new Event());
         return "events";
     }
 
-    // カレンダーページを表示（GET＝見る）
+    // カレンダーページを表示
     @GetMapping("/calendar")
     public String calendar() {
         return "calendar";
+    }
+
+    // イベント新規追加ページ表示
+    @GetMapping("/events/new")
+    public String newEvent(Model model) {
+        model.addAttribute("newEvent", new Event());
+        return "new";
     }
 
     // 登録処理（POST＝送る）

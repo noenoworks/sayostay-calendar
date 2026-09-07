@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>さよならステイチューン カレンダー</title>
+</head>
+
+<body>
+    <h1>さよならステイチューン イベント新規登録</h1>
+    <h2>新規登録</h2>
+    <form th:action="@{/events}" th:object="${newEvent}" method="post">
+        <label>イベント名：<input type="text" th:field="*{eventName}"></label><br>
+        <label>開催日：<input type="date" th:field="*{eventDate}"></label><br>
+        <label>OPEN：<input type="time" th:field="*{openTime}"></label><br>
+        <label>START：<input type="time" th:field="*{startTime}"></label><br>
+        <label>会場：<input type="text" th:field="*{venue}"></label><br>
+        <label>チケット購入済み：<input type="checkbox" th:field="*{ticketPurchased}"></label><br>
+        <label>備考：<input type="text" th:field="*{note}"></label><br>
+        <button type="submit">登録</button>
+    </form>
+    <p><a th:href="@{/events}">一覧に戻る</a></p>
+</body>
+
+</html>
