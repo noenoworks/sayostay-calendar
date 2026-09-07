@@ -16,7 +16,10 @@ public class EventController {
         this.eventRepository = eventRepository;
     }
 
-    // 一覧ページを表示（GET＝見る）
+    // ---------------------------------------------------------
+    // GET＝見る（GetMapping）
+    // ---------------------------------------------------------
+    // リストページを表示
     @GetMapping("/events")
     public String list(Model model) {
         model.addAttribute("events", eventRepository.findAllByOrderByEventDateAsc());
@@ -29,14 +32,25 @@ public class EventController {
         return "calendar";
     }
 
-    // イベント新規追加ページ表示
+    // イベント新規登録ページ表示
     @GetMapping("/events/new")
     public String newEvent(Model model) {
         model.addAttribute("newEvent", new Event());
         return "new";
     }
 
-    // 登録処理（POST＝送る）
+    // 編集画面を表示
+    @GetMapping("/events/{id}/edit")
+    public String edit(@PathVariable Long id, Model model) {
+        Event event = eventRepository.findById(id).orElseThrow();
+        model.addAttribute("event", event);
+        return "edit";
+    }
+
+    // ---------------------------------------------------------
+    // POST＝送る（PostMapping）
+    // ---------------------------------------------------------
+    // 登録処理
     @PostMapping("/events")
     public String create(@ModelAttribute Event event) {
         eventRepository.save(event);
@@ -48,14 +62,6 @@ public class EventController {
     public String delete(@PathVariable Long id) {
         eventRepository.deleteById(id);
         return "redirect:/events";
-    }
-
-    // 編集画面を表示
-    @GetMapping("/events/{id}/edit")
-    public String edit(@PathVariable Long id, Model model) {
-        Event event = eventRepository.findById(id).orElseThrow();
-        model.addAttribute("event", event);
-        return "edit";
     }
 
     // 更新処理

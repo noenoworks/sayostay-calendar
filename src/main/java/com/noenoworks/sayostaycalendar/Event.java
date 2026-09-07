@@ -12,6 +12,10 @@ public class Event {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    // ---------------------------------------------------------
+    // 変数
+    // ---------------------------------------------------------
+    // id
     private Long id;
     // イベント名
     private String eventName;
@@ -28,7 +32,9 @@ public class Event {
     // 備考
     private String note;
 
+    // ---------------------------------------------------------
     // getter / setter
+    // ---------------------------------------------------------
     // id
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
