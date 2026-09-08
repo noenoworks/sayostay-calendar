@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>イベント詳細</title>
+</head>
+<body>
+    <!-- ① イベントの基本情報 -->
+    <h1 th:text="${event.eventName}"></h1>
+    <p>開催日：<span th:text="${event.eventDate}"></span></p>
+    <p>会場：<span th:text="${event.venue}"></span></p>
+
+    <!-- ② このイベントの支出一覧 -->
+    <h2>このイベントの支出</h2>
+    <table border="1">
+        <thead>
+            <tr><th>項目</th><th>金額</th></tr>
+        </thead>
+        <tbody>
+            <tr th:each="expense : ${event.expenses}">
+                <td th:text="${expense.itemName}"></td>
+                <td th:text="${expense.amount}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- ③ 支出を追加するフォーム -->
+    <h2>支出を追加</h2>
+    <form th:action="@{'/events/' + ${event.id} + '/expenses'}" method="post">
+        <label>項目：<input type="text" name="itemName"></label><br>
+        <label>金額：<input type="number" name="amount"></label><br>
+        <button type="submit">追加</button>
+    </form>
+
+    <p><a th:href="@{/events}">一覧に戻る</a></p>
+</body>
+</html>

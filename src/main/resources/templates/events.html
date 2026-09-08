@@ -29,7 +29,7 @@
         </thead>
         <tbody>
             <tr th:each="event : ${events}">
-                <td th:text="${event.eventName}"></td>
+                <td><a th:href="@{'/events/' + ${event.id}}" th:text="${event.eventName}"></a></td>
                 <td th:text="${event.eventDate}"></td>
                 <td th:text="${event.openTime}"></td>
                 <td th:text="${event.startTime}"></td>

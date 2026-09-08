@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class EventController {
 
     private final EventRepository eventRepository;
+    private final ExpenseRepository expenseRepository;
 
-    public EventController(EventRepository eventRepository) {
+    public EventController(EventRepository eventRepository, ExpenseRepository expenseRepository) {
         this.eventRepository = eventRepository;
+        this.expenseRepository = expenseRepository;
     }
 
     // ---------------------------------------------------------
@@ -47,6 +49,14 @@ public class EventController {
         return "edit";
     }
 
+    // 詳細ページ表示
+    @GetMapping("/events/{id}")
+    public String detail(@PathVariable Long id, Model model) {
+        Event event = eventRepository.findById(id).orElseThrow();
+        model.addAttribute("event", event);
+        return "detail";
+    }
+
     // ---------------------------------------------------------
     // POST＝送る（PostMapping）
     // ---------------------------------------------------------
@@ -55,6 +65,16 @@ public class EventController {
     public String create(@ModelAttribute Event event) {
         eventRepository.save(event);
         return "redirect:/events";
+    }
+
+    // 支出を追加
+    @PostMapping("/events/{id}/expenses")
+    public String addExpense(@PathVariable Long id, @ModelAttribute Expense expense) {
+        Event event = eventRepository.findById(id).orElseThrow();
+        expense.setId(null);
+        expense.setEvent(event);
+        expenseRepository.save(expense);
+        return "redirect:/events/" + id;
     }
 
     // 削除処理
