@@ -57,6 +57,15 @@ public class EventController {
         return "detail";
     }
 
+    // 支出記録ページ表示
+    @GetMapping("/events/{id}/expenses/new-expense")
+    public String newExpense(@PathVariable Long id, Model model) {
+        Event event = eventRepository.findById(id).orElseThrow();
+        model.addAttribute("event", event);
+        model.addAttribute("newExpense", new Expense());
+        return "new-expense";
+    }
+
     // ---------------------------------------------------------
     // POST＝送る（PostMapping）
     // ---------------------------------------------------------
