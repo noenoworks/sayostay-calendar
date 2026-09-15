@@ -100,4 +100,11 @@ public class EventController {
         eventRepository.save(event);
         return "redirect:/events";
     }
+
+    // 支出を削除
+    @PostMapping("/events/{eventId}/expenses/{expenseId}/delete")
+    public String deleteExpense(@PathVariable Long eventId, @PathVariable Long expenseId) {
+        expenseRepository.deleteById(expenseId);
+        return "redirect:/events/" + eventId;
+    }
 }
