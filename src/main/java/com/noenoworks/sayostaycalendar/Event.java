@@ -73,4 +73,13 @@ public class Event {
     // 備考
     public String getNote() { return note; }
     public void setNote(String note) { this.note = note; }
+
+    // 支出の合計を返す
+    public int getTotalExpense() {
+        int total = 0;
+        for (Expense expense : expenses) {
+            total += expense.getAmount();
+        }
+        return total;
+    }
 }

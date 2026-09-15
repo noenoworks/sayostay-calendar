@@ -24,6 +24,8 @@
         </tbody>
     </table>
 
+    <p>合計：<span th:text="${event.totalExpense}"></span> 円</p>
+
     <!-- 支出を記録するフォーム -->
     <p><a th:href="@{'/events/' + ${event.id} + '/expenses/new-expense'}">＋ 支出を記録する</a></p>
 
