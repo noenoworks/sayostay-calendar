@@ -17,10 +17,12 @@ public class Expense {
     private Long id;
     @ManyToOne
     private Event event;
-    // 支出内容
-    private String itemName;
+    // カテゴリ
+    private String category;
     // 金額
     private Integer amount;
+    // メモ
+    private String categoryMemo;
 
     // ---------------------------------------------------------
     // getter / setter
@@ -31,11 +33,15 @@ public class Expense {
     public Event getEvent() { return event; }
     public void setEvent(Event event) { this.event = event; }
 
-    // 支出内容
-    public String getItemName() { return itemName; }
-    public void setItemName(String itemName) { this.itemName = itemName; }
+    // カテゴリ
+    public String getCategory() { return category; }
+    public void setCategory(String category) { this.category = category; }
 
     // 金額
     public Integer getAmount() { return amount; }
     public void setAmount(Integer amount) { this.amount = amount; }
+
+    // メモ
+    public String getCategoryMemo() { return categoryMemo; }
+    public void setCategoryMemo(String categoryMemo) { this.categoryMemo = categoryMemo; }
 }

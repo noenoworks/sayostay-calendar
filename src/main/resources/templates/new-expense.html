@@ -8,8 +8,17 @@
     <!-- 支出を記録するフォーム -->
     <h2>支出を記録</h2>
     <form th:action="@{'/events/' + ${event.id} + '/expenses'}" method="post">
-        <label>項目：<input type="text" name="itemName"></label><br>
+        <label>カテゴリ：
+            <select name="category">
+                <option value="チケット">チケット</option>
+                <option value="グッズ">グッズ</option>
+                <option value="食費">食費</option>
+                <option value="交通費">交通費</option>
+                <option value="その他">その他</option>
+            </select>
+        </label><br>
         <label>金額：<input type="number" name="amount"></label><br>
+        <label>メモ：<input type="text" name="categoryMemo"></label><br>
         <button type="submit">保存</button>
     </form>
 

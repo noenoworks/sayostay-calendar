@@ -14,12 +14,18 @@
     <h2>このイベントの支出</h2>
     <table border="1">
         <thead>
-            <tr><th>項目</th><th>金額</th><th>操作</th></tr>
+            <tr>
+                <th>カテゴリ</th>
+                <th>金額</th>
+                <th>メモ</th>
+                <th>操作</th>
+            </tr>
         </thead>
         <tbody>
             <tr th:each="expense : ${event.expenses}">
-                <td th:text="${expense.itemName}"></td>
+                <td th:text="${expense.category}"></td>
                 <td th:text="${expense.amount}"></td>
+                <td th:text="${expense.categoryMemo}"></td>
                 <td>
                     <form th:action="@{'/events/' + ${event.id} + '/expenses/' + ${expense.id} + '/delete'}" method="post">
                         <button type="submit">削除</button>
