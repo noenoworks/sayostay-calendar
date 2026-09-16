@@ -38,7 +38,7 @@ public class EventController {
     @GetMapping("/events/new")
     public String newEvent(Model model) {
         model.addAttribute("newEvent", new Event());
-        return "new";
+        return "new-event";
     }
 
     // 編集画面を表示
@@ -58,7 +58,7 @@ public class EventController {
     }
 
     // 支出記録ページ表示
-    @GetMapping("/events/{id}/expenses/new-expense")
+    @GetMapping("/events/{id}/expenses/new")
     public String newExpense(@PathVariable Long id, Model model) {
         Event event = eventRepository.findById(id).orElseThrow();
         model.addAttribute("event", event);

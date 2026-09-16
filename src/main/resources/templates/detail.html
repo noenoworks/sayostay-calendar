@@ -25,7 +25,7 @@
             <tr th:each="expense : ${event.expenses}">
                 <td th:text="${expense.category}"></td>
                 <td th:text="${expense.amount}"></td>
-                <td th:text="${expense.categoryMemo}"></td>
+                <td th:text="${expense.description}"></td>
                 <td>
                     <form th:action="@{'/events/' + ${event.id} + '/expenses/' + ${expense.id} + '/delete'}" method="post">
                         <button type="submit">削除</button>
@@ -38,7 +38,7 @@
     <p>合計：<span th:text="${event.totalExpense}"></span> 円</p>
 
     <!-- 支出を記録するフォーム -->
-    <p><a th:href="@{'/events/' + ${event.id} + '/expenses/new-expense'}">＋ 支出を記録する</a></p>
+    <p><a th:href="@{'/events/' + ${event.id} + '/expenses/new'}">＋ 支出を記録する</a></p>
 
     <p><a th:href="@{/events}">一覧に戻る</a></p>
 </body>

@@ -22,7 +22,7 @@ public class Expense {
     // 金額
     private Integer amount;
     // メモ
-    private String categoryMemo;
+    private String description;
 
     // ---------------------------------------------------------
     // getter / setter
@@ -42,6 +42,6 @@ public class Expense {
     public void setAmount(Integer amount) { this.amount = amount; }
 
     // メモ
-    public String getCategoryMemo() { return categoryMemo; }
-    public void setCategoryMemo(String categoryMemo) { this.categoryMemo = categoryMemo; }
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
 }

@@ -78,7 +78,9 @@ public class Event {
     public int getTotalExpense() {
         int total = 0;
         for (Expense expense : expenses) {
-            total += expense.getAmount();
+            if (expense.getAmount() != null) {
+                total += expense.getAmount();
+            }
         }
         return total;
     }
