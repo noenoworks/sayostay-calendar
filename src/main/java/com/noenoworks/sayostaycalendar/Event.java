@@ -84,4 +84,13 @@ public class Event {
         }
         return total;
     }
+
+    // 曜日を返す（日本語）
+    public String getDayOfWeek() {
+        if (eventDate == null) {
+            return "";
+        }
+        String[] days = { "月", "火", "水", "木", "金", "土", "日" };
+        return days[eventDate.getDayOfWeek().getValue() - 1];
+    }
 }

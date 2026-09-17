@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title th:text="${event.eventName}"></title>
+    <link rel="stylesheet" th:href="@{/style.css}">
 </head>
 <body>
     <!-- イベントの基本情報 -->
@@ -35,7 +36,7 @@
         </tbody>
     </table>
 
-    <p>合計：<span th:text="${event.totalExpense}"></span> 円</p>
+    <p class="total">合計：<span th:text="${event.totalExpense}"></span> 円</p>
 
     <!-- 支出を記録するフォーム -->
     <p><a th:href="@{'/events/' + ${event.id} + '/expenses/new'}">＋ 支出を記録する</a></p>
